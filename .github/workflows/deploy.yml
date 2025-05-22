@@ -1,0 +1,22 @@
+name: Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployement using ssh
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/jimlyassidqi/projects/belajar-cicd-2
+            git pull origin main
+            npm install
+            pm2 restart belajar-cicd-2
