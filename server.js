@@ -14,6 +14,10 @@ app.get('/admin', (req, res) => {
   res.send('Hello Admin!');
 });
 
+app.get('/profile', (req, res) => {
+  res.send('Hello Profile!');
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
